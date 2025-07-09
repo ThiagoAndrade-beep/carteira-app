@@ -1,0 +1,31 @@
+{
+  "usuarios": [
+    {
+      "id": "e7b9",
+      "nome": "thiago",
+      "email": "t@gmail.com",
+      "senha": "Polinho26",
+      "produtos": [],
+      "valor": "50"
+    },
+    {
+      "id": "91b8",
+      "nome": "julius",
+      "email": "paidoano@gmail.com",
+      "senha": "rochelle",
+      "produtos": [
+        {
+          "id": "1752079314901",
+          "nome": "bola",
+          "preco": 45
+        },
+        {
+          "id": "1752079321533",
+          "nome": "porta",
+          "preco": 50
+        }
+      ],
+      "valor": "850"
+    }
+  ]
+}
