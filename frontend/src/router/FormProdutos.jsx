@@ -61,10 +61,10 @@ const FormProdutos = () => {
         toast.error("Saldo insuficiente")
         return;
       }
-        if (porcetagem > 70 && !avisoSaldoLimite.current) {
-          toast.warning("Voce ultrapassou 70% do seu saldo atual")
-          avisoSaldoLimite.current = true
-        }
+      if (porcetagem > 70 && !avisoSaldoLimite.current) {
+        toast.warning("Voce ultrapassou 70% do seu saldo atual")
+        avisoSaldoLimite.current = true
+      }
 
       const novoProduto = {
         id: String(Date.now()),
@@ -120,7 +120,9 @@ const FormProdutos = () => {
             <input type="text" placeholder='Nome do produto' className='input-nameProduto' name='nome' value={form.nome} onChange={handleChange} />
             <input type="number" placeholder='Preço do produto' className='input-precoProduto' name='preco' value={form.preco} onChange={handleChange} />
           </div>
-          <button className='btn-addProdutos' type='submit'>Adicionar</button>
+          <button type='submit' className='btn-adicionar'>
+            {loading ? "Adicionando..." : "Adicionar"}
+          </button>
         </form>
         <div className="saldo">
           <h2>Saldo restante:</h2>
