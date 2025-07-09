@@ -12,7 +12,7 @@ const FormProdutos = () => {
   const userValor = parseFloat(localStorage.getItem('valorInicial'))
 
 
-  const { updateData, loading, error } = usePatch('http://localhost:3000/usuarios')
+  const { updateData, loading, error } = usePatch('https://carteira-app.onrender.com/usuarios')
   const [form, setForm] = useState({ nome: '', preco: '' })
   const userId = localStorage.getItem('userId')
   const [produto, setProduto] = useState([])
@@ -25,7 +25,7 @@ const FormProdutos = () => {
   useEffect(() => {
     const fetchProdutos = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/usuarios/${userId}`)
+        const response = await fetch(`https://carteira-app.onrender.com/usuarios/${userId}`)
         const user = await response.json()
 
         setProduto(user.produtos || [])
@@ -48,7 +48,7 @@ const FormProdutos = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/usuarios/${userId}`)
+      const response = await fetch(`https://carteira-app.onrender.com/usuarios/${userId}`)
       const user = await response.json()
 
       const produtosAtuais = user.produtos || []

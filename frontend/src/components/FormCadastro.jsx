@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
 const FormCadastro = () => {
-    const { postData, response, loading, error } = useFetch('http://localhost:3000/usuarios')
+    const { postData, response, loading, error } = useFetch('https://carteira-app.onrender.com/usuarios')
     const [form, setForm] = useState({ nome: '', email: '', senha: '', 'produtos': [] })
 
     const handleChange = (e) => {

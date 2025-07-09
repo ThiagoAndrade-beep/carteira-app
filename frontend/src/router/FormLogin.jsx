@@ -11,7 +11,7 @@ const FormLogin = () => {
     const [senha, setSenha] = useState('')
     const navigate = useNavigate()
 
-    const {data, loading, error} = useGet('http://localhost:3000/usuarios')
+    const {data, loading, error} = useGet('https://carteira-app.onrender.com/usuarios')
     
     useEffect(() => {
         console.log("executou", data)

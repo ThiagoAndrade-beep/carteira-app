@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const InitialValor = () => {
 
-    const { updateData, loading, error } = usePatch ('http://localhost:3000/usuarios')
+    const { updateData, loading, error } = usePatch ('https://carteira-app.onrender.com/usuarios')
     const [form, setForm] = useState({ valor: '' })
     const navigate = useNavigate()
     const userName = localStorage.getItem('userName')
