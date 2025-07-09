@@ -58,7 +58,9 @@ const FormLogin = () => {
                         <input type="password" placeholder='Digite sua senha' name='senha' value={senha} onChange={(e) => setSenha(e.target.value)}/>
                     </div>
                     {/* efeito loading */}
-                    <button className='btn-login' type='submit'>Entrar</button>
+                    <button className='btn-cadastrar' type='submit' disabled={loading}>
+                        {loading ? (<><span className='loading'></span></>) : ('Entrar')}
+                    </button>
                     <p>Não tem conta? <Link to='/cadastro'>  Cadastre-se agora</Link></p>
 
                     <ToastContainer />

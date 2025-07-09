@@ -6,7 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const CreditValor = () => {
 
     const [form, setForm] = useState({ valor: '' })
-    const [saldo, setSaldo] = useState(() => { 
+    const [loading, setLoading] = useState(false)
+    const [saldo, setSaldo] = useState(() => {
         const saldoUser = parseFloat(localStorage.getItem('valorInicial'))
         return saldoUser;
     }) //o saldo vai começar com o valor que esta salvo
@@ -23,12 +24,12 @@ const CreditValor = () => {
         e.preventDefault()
         const valor = parseFloat(form.valor)
 
-        if(isNaN(valor) || valor <= 0) {
+        if (isNaN(valor) || valor <= 0) {
             toast.error("Adicione um valor válido")
             return;
         }
 
-        if(saldo) {
+        if (saldo) {
             setSaldo(prev => prev + valor)
             toast.success("Saldo adicionado")
         }
@@ -47,12 +48,12 @@ const CreditValor = () => {
                     <h2 className='title-valor'>Insira o valor que deseja acrescentar</h2>
                     <h3 className='subTitle-valor'>Valor:</h3>
                     <input type="number" className='input-number' placeholder='123' name='valor' value={form.valor} onChange={handleChange} />
-                    <button type='submit' className='btn-adicionar'>
-                        Adicionar
+                    <button type='submit' className='btn-adicionar' disabled={loading}>
+                        {loading ? 'Adicionando...' : 'Adicionar'}
                     </button>
                     {/* {error && <p className="error">Erro: {error}</p>} */}
 
-                     <ToastContainer /> 
+                    <ToastContainer />
                 </div>
             </form>
         </div>
