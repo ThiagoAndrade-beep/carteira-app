@@ -23,7 +23,7 @@ const FormLogin = () => {
         console.log(email)
         console.log(senha)
 
-        const verificarLogin = data.find((item) => item.email === email && item.senha === senha) //retorna 
+        const verificarLogin = data.find((item) => item.email === email && item.senha === senha) 
         
         if(verificarLogin) {
             localStorage.setItem('userId', verificarLogin.id)

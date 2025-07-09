@@ -4,6 +4,8 @@ import { useFetch } from '../hooks/useFetch'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { useGet } from '../hooks/useGet';
+import axios from 'axios';
 
 const FormCadastro = () => {
     const { postData, response, loading, error } = useFetch('https://carteira-app.onrender.com/usuarios')
@@ -35,16 +37,28 @@ const FormCadastro = () => {
             return
         }
 
-        await postData(form)
-        
+        try {
+            const res = await axios.get('https://carteira-app.onrender.com/usuarios')
+            const user = res.data
 
-        if (error) {
-            toast.error("Erro ao cadastrar")
-        } else {
-            toast.success("Usuário cadastrado com sucesso")
-            setForm({ nome: '', email: '', senha: '' })
+            const emailExiste = user.some(usuario => usuario.email === form.email)
+
+            if(emailExiste) {
+                toast.error("Email já cadastrado")
+                return;
+            }
+            await postData(form)
+
+            if (error) {
+                toast.error("Erro ao cadastrar")
+            } else {
+                toast.success("Usuário cadastrado com sucesso")
+                setForm({ nome: '', email: '', senha: '' })
+            }
+        } catch (err) {
+            toast.error("Erro ao verificar usuários")
         }
-    }
+    } 
 
     return (
         <div className='form-container-register'>
